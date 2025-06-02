@@ -32,7 +32,7 @@ class ProductController extends Controller
     // ✅ Show single product (optional)
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        return view('products.view', compact('product'));
     }
 
     // ✅ Show edit form
