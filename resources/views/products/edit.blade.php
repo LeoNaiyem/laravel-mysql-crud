@@ -1,17 +1,24 @@
 @extends('layouts.main')
 
 @section('content')
-    <h2>{{ isset($product) ? 'Edit' : 'Create' }} Product</h2>
+    <h2>
+        {{ isset($product) ? 'Edit' : 'Create' }} Product</h2>
 
-    @if($errors->any())
+    @if ($errors->any())
         <div class="alert alert-danger">
-            <ul>@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
     @endif
 
     <form action="{{ isset($product) ? route('products.update', $product) : route('products.store') }}" method="POST">
         @csrf
-        @if(isset($product)) @method('PUT') @endif
+        @if (isset($product))
+            @method('PUT')
+        @endif
 
         <div class="mb-2">
             <label>Name</label>
@@ -20,8 +27,7 @@
 
         <div class="mb-2">
             <label>Description</label>
-            <textarea name="description"
-                class="form-control">{{ old('description', $product->description ?? '') }}</textarea>
+            <textarea name="description" class="form-control">{{ old('description', $product->description ?? '') }}</textarea>
         </div>
 
         <div class="mb-2">
