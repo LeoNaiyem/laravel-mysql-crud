@@ -21,12 +21,12 @@
                 <td>{{$doctor->department_id}}</td>
                 <td>{{$doctor->created_at}}</td>
                 <td>
-                    <a href="{{ route('doctors.show', $doctor) }}" class="btn btn-primary">Show</a>
-                    <a href="{{ route('doctors.edit', $doctor) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('doctors.show', $doctor) }}" class="btn  btn-sm btn-primary">Show</a>
+                    <a href="{{ route('doctors.edit', $doctor) }}" class="btn  btn-sm btn-warning">Edit</a>
                     <form style="display: inline" action="{{ route('doctors.destroy', $doctor) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-danger btn-sm ">Delete</button>
                     </form>
                 </td>
             </tr>

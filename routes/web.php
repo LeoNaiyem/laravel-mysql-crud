@@ -1,7 +1,7 @@
 <?php
-
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('suppliers', SupplierController::class);
     Route::resource('doctors', DoctorController::class);
     Route::resource('services', ServiceController::class);
+    Route::resource('patients', PatientController::class);
 
 });
 
