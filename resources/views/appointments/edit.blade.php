@@ -1,3 +1,1 @@
-<div>
-    <!-- Simplicity is an acquired taste. - Katharine Gerould -->
-</div>
+@include('appointments._form')

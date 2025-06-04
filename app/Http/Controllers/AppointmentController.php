@@ -12,7 +12,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $appointments = Appointment::latest()->paginate('10');
+        return view('appointments.index', compact('appointments'));
     }
 
     /**
@@ -20,7 +21,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('appointments.create')->with('mode', 'create');
     }
 
     /**
@@ -28,7 +29,8 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Appointment::create($request->all());
+        return redirect(route('appointments.index'))->with('success', 'successfully created!');
     }
 
     /**
@@ -36,7 +38,7 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        //
+        return view('appointments.view', $appointment);
     }
 
     /**
@@ -44,7 +46,7 @@ class AppointmentController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        //
+        return view('appointments.edit', compact('appointment'))->with('mode', 'edit');
     }
 
     /**
@@ -52,7 +54,8 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, Appointment $appointment)
     {
-        //
+        $appointment->update($request->all());
+        return redirect(route('appointments.index'))->with('success', 'successfully updated');
     }
 
     /**
@@ -60,6 +63,7 @@ class AppointmentController extends Controller
      */
     public function destroy(Appointment $appointment)
     {
-        //
+        $appointment->delete();
+        return redirect(route('appointments.index'))->with('success', 'successfully deleted!');
     }
 }
